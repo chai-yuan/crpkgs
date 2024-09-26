@@ -14,17 +14,19 @@
       packages = forAllSystems (system:
         let
           pkgs = import nixpkgs { inherit system; };
-          myPackages = import ./packages { inherit pkgs; };
+          crpkgs = import ./packages { inherit pkgs; };
         in
-        myPackages
+        crpkgs
       );
 
       defaultPackage = forAllSystems (system:
         let
           pkgs = import nixpkgs { inherit system; };
-          myPackages = import ./packages { inherit pkgs; };
+          crpkgs = import ./packages { inherit pkgs; };
         in
-        myPackages.hello
+        crpkgs.hello
       );
+
+      templates = import ./templates;
     };
 }
