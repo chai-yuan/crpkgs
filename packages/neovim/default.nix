@@ -9,7 +9,6 @@ pkgs.stdenv.mkDerivation rec {
     sha256 = "05sjw4200ggwk8vp3x4b527sf4pmphi8ms3q9r788fshbminwscz";
   };
 
-  nativeBuildInputs = [ pkgs.autoPatchelfHook pkgs.makeWrapper ];
   buildInputs = [ pkgs.zlib ];
 
   unpackPhase = ''
@@ -19,10 +18,6 @@ pkgs.stdenv.mkDerivation rec {
   installPhase = ''
     mkdir -p $out/bin
     cp -r nvim-linux64/* $out/
-  '';
-
-  postFixup = ''
-    wrapProgram $out/bin/nvim --prefix PATH : ${pkgs.lib.makeBinPath [ pkgs.zlib ]}
   '';
 
   meta = with pkgs.lib; {
