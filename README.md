@@ -11,7 +11,7 @@ To use these packages in your Nix projects, you can add this repository as an in
   description = "My project using custom packages";
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-24.05";
     crpkgs.url = "github:chai-yuan/crpkgs";
   };
 
