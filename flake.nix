@@ -5,13 +5,18 @@
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-24.05";
   };
 
-  outputs = { self, nixpkgs }:
+  outputs =
+    { self, nixpkgs }:
     let
-      supportedSystems = [ "x86_64-linux" "aarch64-linux" ];
+      supportedSystems = [
+        "x86_64-linux"
+        "aarch64-linux"
+      ];
       forAllSystems = f: nixpkgs.lib.genAttrs supportedSystems (system: f system);
     in
     {
-      packages = forAllSystems (system:
+      packages = forAllSystems (
+        system:
         let
           pkgs = import nixpkgs { inherit system; };
           crpkgs = import ./packages { inherit pkgs; };
@@ -19,7 +24,8 @@
         crpkgs
       );
 
-      defaultPackage = forAllSystems (system:
+      defaultPackage = forAllSystems (
+        system:
         let
           pkgs = import nixpkgs { inherit system; };
           crpkgs = import ./packages { inherit pkgs; };
