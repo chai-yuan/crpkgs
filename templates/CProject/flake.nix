@@ -18,7 +18,7 @@
       crpkgs = crPkgs.packages.${system};
     in
     {
-      devShells."${system}".default = nixpkgs.mkShell {
+      devShells."${system}".default = pkgs.mkShell {
 
         packages = [
           pkgs.gcc
