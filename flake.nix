@@ -2,7 +2,7 @@
   description = "My custom Nix packages";
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-24.05";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-24.11";
   };
 
   outputs =
@@ -10,7 +10,6 @@
     let
       supportedSystems = [
         "x86_64-linux"
-        "aarch64-linux"
       ];
       forAllSystems = f: nixpkgs.lib.genAttrs supportedSystems (system: f system);
     in

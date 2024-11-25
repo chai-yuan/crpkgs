@@ -1,6 +1,6 @@
 {
     default = {
-      path = ./hello;
-      description = "Default template for my Nix projects (hello-c)";
+      path = ./CProject;
+      description = "A Nix-flake-based development environment";
     };
 }
