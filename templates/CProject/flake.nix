@@ -23,6 +23,7 @@
         packages = [
           pkgs.gcc
           pkgs.gnumake
+          pkgs.clang-tools
         ];
 
         shellHook = ''
