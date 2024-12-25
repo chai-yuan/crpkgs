@@ -5,7 +5,7 @@ pkgs.stdenv.mkDerivation rec {
   version = "2024.12.16";
 
   src = pkgs.fetchurl {
-    url = "https://github.com/riscv-collab/riscv-gnu-toolchain/releases/download/${version}/riscv64-elf-ubuntu-24.04-gcc-nightly-${version}-nightly.tar.xz";
+    url = "https://github.com/riscv-collab/riscv-gnu-toolchain/releases/download/${version}/riscv64-elf-ubuntu-22.04-gcc-nightly-${version}-nightly.tar.xz";
     sha256 = "18mvq8101r3vh0msljhl6c6i94lsmv8vwl6lbm8jq0wqpk5jz1kv";  
   };
 
@@ -18,10 +18,8 @@ pkgs.stdenv.mkDerivation rec {
     cp -r riscv/* $out/
   '';
 
-  glibc = pkgs.glibc_2_38;
-
-  postFixup = ''
-    find $out/bin -type f -executable -exec patchelf --set-rpath ${glibc}/lib:${pkgs.zlib}/lib {} \;
+  shellHook = ''
+    export LD_LIBRARY_PATH=${pkgs.glibc}/lib:${pkgs.zlib}/lib:$LD_LIBRARY_PATH
   '';
 
   meta = with pkgs.lib; {
