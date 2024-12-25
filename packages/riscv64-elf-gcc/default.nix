@@ -6,7 +6,7 @@ pkgs.stdenv.mkDerivation rec {
 
   src = pkgs.fetchurl {
     url = "https://github.com/riscv-collab/riscv-gnu-toolchain/releases/download/${version}/riscv64-elf-ubuntu-22.04-gcc-nightly-${version}-nightly.tar.xz";
-    sha256 = "18mvq8101r3vh0msljhl6c6i94lsmv8vwl6lbm8jq0wqpk5jz1kv";  
+    sha256 = "0cj000sis87x8hxzj4zq2swrhdf1s857a2gfa937rlwrc98jphqp";  
   };
 
   unpackPhase = ''
