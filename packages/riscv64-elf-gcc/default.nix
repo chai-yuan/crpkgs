@@ -18,8 +18,10 @@ pkgs.stdenv.mkDerivation rec {
     cp -r riscv/* $out/
   '';
 
+  glibc = pkgs.glibc_2_38;
+
   postFixup = ''
-    find $out/bin -type f -executable -exec patchelf --set-rpath ${pkgs.glibc}/lib:${pkgs.zlib}/lib {} \;
+    find $out/bin -type f -executable -exec patchelf --set-rpath ${glibc}/lib:${pkgs.zlib}/lib {} \;
   '';
 
   meta = with pkgs.lib; {
