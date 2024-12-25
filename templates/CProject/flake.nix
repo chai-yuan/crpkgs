@@ -23,6 +23,7 @@
         packages = [
           pkgs.gcc
           pkgs.gnumake
+          pkgs.bear
           pkgs.clang-tools
         ];
 
