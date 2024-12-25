@@ -18,6 +18,10 @@ pkgs.stdenv.mkDerivation rec {
     cp -r riscv/* $out/
   '';
 
+  postFixup = ''
+    find $out/bin -type f -executable -exec patchelf --set-rpath ${pkgs.glibc}/lib:${pkgs.zlib}/lib {} \;
+  '';
+
   meta = with pkgs.lib; {
     description = "RISC-V GNU Toolchain (precompiled)";
     homepage = "https://github.com/riscv-collab/riscv-gnu-toolchain";
