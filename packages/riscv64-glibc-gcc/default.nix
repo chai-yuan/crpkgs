@@ -18,9 +18,6 @@ pkgs.stdenv.mkDerivation rec {
     cp -r riscv64-lp64d--glibc--stable-2024.05-1/* $out/
   '';
 
-  shellHook = ''
-  '';
-
   meta = with pkgs.lib; {
     description = "RISC-V GNU Toolchain (precompiled) with glibc";
     homepage = "https://github.com/riscv-collab/riscv-gnu-toolchain";
